@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>SWITCHY · เทียบ gi .245 กับ .265 (ครอปวงกลมจริง)</title>
+<link rel="stylesheet" href="icons.css">
+<style>
+  html, body { width: 1180px; height: 560px; overflow: hidden; }
+  body { padding: 24px 30px; background: radial-gradient(140% 120% at 50% -10%, #10151c 0%, #07090c 60%); }
+  h1 { font-size: 22px; }
+  .sub { color: #8B96A5; font-size: 13px; margin-top: 6px; }
+  .icon .grid { inset: calc(var(--s) * var(--gi)); }
+  .row { display: flex; gap: 54px; margin-top: 22px; align-items: flex-start; }
+  .cell { text-align: center; }
+  /* ครอปตามมาสก์จริง: วงกลมเส้นผ่านศูนย์กลาง 72 จากกรอบ 108 (66.7%) */
+  .crop { width: 262px; height: 262px; position: relative; overflow: hidden; border-radius: 50%; margin: 0 auto; }
+  .crop .icon { position: absolute; left: -79px; top: -79px; border-radius: 0 !important; }
+  .crop .icon::after, .crop .icon::before { display: none; }
+  .cap { color: #E6EDF3; font-size: 14px; margin-top: 12px; }
+  .cap b { color: #FF4D4F; }
+  .small { width: 62px; height: 62px; position: relative; overflow: hidden; border-radius: 50%; display: inline-block; margin-top: 10px; }
+  .small .icon { position: absolute; left: -19px; top: -19px; border-radius: 0 !important; }
+  .small .icon::after, .small .icon::before { display: none; }
+  .note { color: #6F7A8A; font-size: 11.5px; margin-top: 6px; }
+</style>
+</head>
+<body>
+  <h1>เทียบขนาดตาราง: <span style="color:#FF4D4F">gi .245</span> (ที่ใช้อยู่) กับ <span style="color:#6FB4E8">gi .265</span></h1>
+  <div class="sub">ครอปวงกลมจริงแบบ Android (เห็น 72 จาก 108 หน่วย) — ดูว่ามุมตารางถูกตัดไหม</div>
+  <div class="row">
+    <div class="cell">
+      <div class="crop"><div class="icon d" style="--s:420px;--gi:.245"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div>
+      <div class="cap"><b>gi .245</b> — ที่ใช้อยู่ (มุมถูกตัดเล็กน้อย)</div>
+      <div class="small"><div class="icon d" style="--s:100px;--gi:.245"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div>
+      <div class="note">ขนาดจริงบนจอ</div>
+    </div>
+    <div class="cell">
+      <div class="crop"><div class="icon d" style="--s:420px;--gi:.265"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div>
+      <div class="cap"><b>gi .265</b> — มุมพ้นวงกลมทั้งหมด</div>
+      <div class="small"><div class="icon d" style="--s:100px;--gi:.265"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div>
+      <div class="note">ขนาดจริงบนจอ</div>
+    </div>
+    <div class="cell">
+      <div class="crop"><div class="icon d" style="--s:420px;--gi:.30"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div>
+      <div class="cap"><b>gi .30</b> — เผื่อขอบอีก (ทดลอง)</div>
+      <div class="small"><div class="icon d" style="--s:100px;--gi:.30"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div>
+      <div class="note">ขนาดจริงบนจอ</div>
+    </div>
+  </div>
+</body>
+</html>

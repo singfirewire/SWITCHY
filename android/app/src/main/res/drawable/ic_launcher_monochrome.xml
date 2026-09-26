@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SWITCHY — เลเยอร์ monochrome สำหรับ "ไอคอนธีม" ของ Android 13+
+  ระบบใช้เฉพาะช่องอัลฟาไปย้อมสีตามวอลเปเปอร์ จึงเป็นรูปทรงล้วน ไม่มีสี
+  ช่องที่ออกอากาศทึบเต็ม ช่องอื่นจาง เพื่อรักษาลำดับความสำคัญให้ยังอ่านออก
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- แถวบน -->
+    <path android:fillAlpha="0.42" android:fillColor="#FFFFFF" android:pathData="M32.72,30.78 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z" />
+    <path android:fillAlpha="0.42" android:fillColor="#FFFFFF" android:pathData="M49.28,30.78 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z" />
+    <path android:fillAlpha="0.42" android:fillColor="#FFFFFF" android:pathData="M65.84,30.78 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z" />
+    <!-- แถวกลาง (ซ้าย / ขวา) -->
+    <path android:fillAlpha="0.42" android:fillColor="#FFFFFF" android:pathData="M32.72,47.34 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z" />
+    <path android:fillAlpha="0.42" android:fillColor="#FFFFFF" android:pathData="M65.84,47.34 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z" />
+    <!-- แถวล่าง -->
+    <path android:fillAlpha="0.42" android:fillColor="#FFFFFF" android:pathData="M32.72,63.9 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z" />
+    <path android:fillAlpha="0.42" android:fillColor="#FFFFFF" android:pathData="M49.28,63.9 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z" />
+    <path android:fillAlpha="0.42" android:fillColor="#FFFFFF" android:pathData="M65.84,63.9 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z" />
+    <!-- ช่องที่ออกอากาศ — ทึบเต็ม -->
+    <path android:fillColor="#FFFFFF" android:pathData="M49.28,47.34 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z" />
+</vector>

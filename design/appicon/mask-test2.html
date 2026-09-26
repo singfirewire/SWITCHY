@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>SWITCHY · ทดสอบมาสก์ (สเปกจริง 72/108)</title>
+<link rel="stylesheet" href="icons.css">
+<style>
+  html, body { width: 1460px; height: 1080px; overflow: hidden; }
+  body { padding: 26px 34px; background: radial-gradient(140% 120% at 50% -10%, #10151c 0%, #07090c 60%); }
+  h1 { font-size: 25px; }
+  .sub { color: #8B96A5; font-size: 13.5px; margin-top: 6px; }
+  .icon .grid { inset: calc(var(--s) * var(--gi, .115)); }
+  .icon { background: #05070A; }
+  table { border-collapse: separate; border-spacing: 26px 16px; margin-top: 14px; }
+  th { color: #A8B3C1; font-size: 13px; font-weight: 600; }
+  /* ครอปแบบ Android จริง: เห็นเฉพาะวงใน 72 หน่วย จากกรอบ 108 (66.7%) */
+  .crop { width: 105px; height: 105px; position: relative; overflow: hidden; }
+  .crop .icon { position: absolute; left: -32px; top: -32px; border-radius: 0 !important; }
+  .crop .icon::after, .crop .icon::before { display: none; }
+  .crop.circle { border-radius: 50%; }
+  .crop.squircle { border-radius: 30%; }
+  .crop.rsquare { border-radius: 16%; }
+  .rowhead { color: #E6EDF3; font-size: 13px; width: 195px; line-height: 1.5; }
+  .rowhead b { color: #FF4D4F; }
+  .legend { color: #6F7A8A; font-size: 11.5px; margin-top: 12px; }
+</style>
+</head>
+<body>
+  <h1>แบบ D · ตัดตามมาสก์จริงของ Android (เห็นเฉพาะ 72 จาก 108 หน่วย)</h1>
+  <div class="sub">เรนเดอร์ที่ 168px แล้วครอปเหลือ 66.7% ตรงกลาง — เทียบว่าไอคอนจริงบนเครื่องจะเห็นอะไร</div>
+  <table>
+    <tr><th></th><th>วงกลม (Android มาตรฐาน)</th><th>สครอว์เคิล (POCO / Pixel)</th><th>สี่เหลี่ยมมน</th></tr>
+    <tr>
+      <td class="rowhead"><b>gi .18</b> — ใหญ่เต็มที่</td>
+      <td><div class="crop circle"><div class="icon d" style="--s:168px;--gi:.18"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="crop squircle"><div class="icon d" style="--s:168px;--gi:.18"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="crop rsquare"><div class="icon d" style="--s:168px;--gi:.18"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+    </tr>
+    <tr>
+      <td class="rowhead"><b>gi .21</b> — สมดุล</td>
+      <td><div class="crop circle"><div class="icon d" style="--s:168px;--gi:.21"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="crop squircle"><div class="icon d" style="--s:168px;--gi:.21"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="crop rsquare"><div class="icon d" style="--s:168px;--gi:.21"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+    </tr>
+    <tr>
+      <td class="rowhead"><b>gi .245</b> — มุมพ้นวงกลมพอดี</td>
+      <td><div class="crop circle"><div class="icon d" style="--s:168px;--gi:.245"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="crop squircle"><div class="icon d" style="--s:168px;--gi:.245"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="crop rsquare"><div class="icon d" style="--s:168px;--gi:.245"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+    </tr>
+    <tr>
+      <td class="rowhead"><b>gi .265</b> — safe zone เป๊ะ</td>
+      <td><div class="crop circle"><div class="icon d" style="--s:168px;--gi:.265"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="crop squircle"><div class="icon d" style="--s:168px;--gi:.265"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="crop rsquare"><div class="icon d" style="--s:168px;--gi:.265"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+    </tr>
+  </table>
+  <div class="legend">หมายเหตุ: vMix เองก็ทำไอคอนตารางเต็มจอ (โดนครอปบนมาสก์กลม) — ถ้าชอบแบบเต็มจอเลือก .18/.21 ถ้าอยากให้รอดทุกเครื่องเลือก .245/.265</div>
+</body>
+</html>

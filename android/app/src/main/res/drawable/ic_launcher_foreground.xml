@@ -1,18 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SWITCHY — ชั้นภาพของไอคอน (adaptive icon 108x108)
+
+  ตาราง 3x3 = ภาษาตารางของ vMix (วัดสีจริงจากไอคอน vMix ได้ #3078BC)
+  ช่องกลาง = ช่องที่กำลังออกอากาศ จึงเป็นแดง Tally เรืองแสง
+
+  ขนาดตาราง inset 30.78/108 (= 0.285):
+    วัดบนเครื่องจริงแล้ว 1 หน่วย XML ≈ 2.167 px และมาสก์วงกลม = 72 หน่วย
+    ค่า .285 ทำให้ "เส้นทแยงมุมของตาราง" = 46.44 x 1.414/2 = 32.8 หน่วย < รัศมีวงกลม 36
+    จึงไม่ถูกตัดหัวมุมเลย แต่ยังเต็มวงกลมสวย (ตารางกว้าง 64% ของวงกลม)
+-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- วงกลม Tally -->
-    <path
-        android:fillColor="#E5484D"
-        android:pathData="M54,30 m-13,0 a13,13 0 1,0 26,0 a13,13 0 1,0 -26,0" />
-    <!-- กรอบกล้อง -->
-    <path
-        android:fillColor="#E6EDF3"
-        android:pathData="M30,52h48a6,6 0 0 1 6,6v20a6,6 0 0 1 -6,6H30a6,6 0 0 1 -6,-6V58a6,6 0 0 1 6,-6zM30,58v20h48V58z" />
-    <!-- เลนส์ -->
-    <path
-        android:fillColor="#30A46C"
-        android:pathData="M54,68 m-9,0 a9,9 0 1,0 18,0 a9,9 0 1,0 -18,0" />
+
+    <!-- แสงฟุ้งจากช่องที่ออกอากาศ (วาดก่อนเพื่อให้อยู่หลังช่องอื่น) -->
+    <path android:pathData="M54,54 m-21,0 a21,21 0 1,0 42,0 a21,21 0 1,0 -42,0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="radial"
+                android:centerX="54"
+                android:centerY="54"
+                android:gradientRadius="21"
+                android:startColor="#8CFF4D4F"
+                android:centerColor="#47FF4D4F"
+                android:endColor="#00FF4D4F" />
+        </aapt:attr>
+    </path>
+
+    <!-- ช่องน้ำเงิน 8 ช่อง (แถวบน) -->
+    <path android:pathData="M32.72,30.78 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="0" android:startY="30.78" android:endX="0" android:endY="44.1"
+                android:startColor="#4290D4" android:centerColor="#3078BC" android:endColor="#1F5590" />
+        </aapt:attr>
+    </path>
+    <path android:pathData="M49.28,30.78 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="0" android:startY="30.78" android:endX="0" android:endY="44.1"
+                android:startColor="#4290D4" android:centerColor="#3078BC" android:endColor="#1F5590" />
+        </aapt:attr>
+    </path>
+    <path android:pathData="M65.84,30.78 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="0" android:startY="30.78" android:endX="0" android:endY="44.1"
+                android:startColor="#4290D4" android:centerColor="#3078BC" android:endColor="#1F5590" />
+        </aapt:attr>
+    </path>
+
+    <!-- ช่องน้ำเงิน (แถวกลาง ซ้าย/ขวา) -->
+    <path android:pathData="M32.72,47.34 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="0" android:startY="47.34" android:endX="0" android:endY="60.66"
+                android:startColor="#4290D4" android:centerColor="#3078BC" android:endColor="#1F5590" />
+        </aapt:attr>
+    </path>
+    <path android:pathData="M65.84,47.34 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="0" android:startY="47.34" android:endX="0" android:endY="60.66"
+                android:startColor="#4290D4" android:centerColor="#3078BC" android:endColor="#1F5590" />
+        </aapt:attr>
+    </path>
+
+    <!-- ช่องน้ำเงิน (แถวล่าง) -->
+    <path android:pathData="M32.72,63.9 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="0" android:startY="63.9" android:endX="0" android:endY="77.22"
+                android:startColor="#4290D4" android:centerColor="#3078BC" android:endColor="#1F5590" />
+        </aapt:attr>
+    </path>
+    <path android:pathData="M49.28,63.9 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="0" android:startY="63.9" android:endX="0" android:endY="77.22"
+                android:startColor="#4290D4" android:centerColor="#3078BC" android:endColor="#1F5590" />
+        </aapt:attr>
+    </path>
+    <path android:pathData="M65.84,63.9 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="0" android:startY="63.9" android:endX="0" android:endY="77.22"
+                android:startColor="#4290D4" android:centerColor="#3078BC" android:endColor="#1F5590" />
+        </aapt:attr>
+    </path>
+
+    <!-- ช่องกลาง: ออกอากาศ (แดงเรืองแสง) -->
+    <path android:pathData="M49.28,47.34 h9.44 a1.94,1.94 0 0 1 1.94,1.94 v9.44 a1.94,1.94 0 0 1 -1.94,1.94 h-9.44 a1.94,1.94 0 0 1 -1.94,-1.94 v-9.44 a1.94,1.94 0 0 1 1.94,-1.94 z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="radial"
+                android:centerX="52.1"
+                android:centerY="50.8"
+                android:gradientRadius="11.1"
+                android:startColor="#FFB9BB"
+                android:centerColor="#FF4D4F"
+                android:endColor="#A8121A" />
+        </aapt:attr>
+    </path>
 </vector>

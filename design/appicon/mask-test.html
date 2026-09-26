@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>SWITCHY · ทดสอบมาสก์ adaptive icon (แบบ D)</title>
+<link rel="stylesheet" href="icons.css">
+<style>
+  html, body { width: 1500px; height: 1180px; overflow: hidden; }
+  body { padding: 28px 34px; background: radial-gradient(140% 120% at 50% -10%, #10151c 0%, #07090c 60%); }
+  h1 { font-size: 26px; }
+  .sub { color: #8B96A5; font-size: 14px; margin-top: 6px; }
+  /* ในหน้านี้ ตารางใช้ค่า inset จากตัวแปร --gi เพื่อลองหลายขนาด */
+  .icon .grid { inset: calc(var(--s) * var(--gi, .115)); }
+  table { border-collapse: separate; border-spacing: 22px 14px; margin-top: 16px; }
+  th { color: #A8B3C1; font-size: 13px; font-weight: 600; }
+  td { vertical-align: middle; }
+  .rowhead { color: #E6EDF3; font-size: 13px; width: 210px; line-height: 1.5; }
+  .rowhead b { color: #FF4D4F; }
+  /* มาสก์แบบต่าง ๆ ของ Android */
+  .mask { width: 168px; height: 168px; overflow: hidden; position: relative; }
+  .mask.circle { border-radius: 50%; }
+  .mask.squircle { border-radius: 32%; }
+  .mask.rsquare { border-radius: 17%; }
+  .mask .icon { border-radius: 0 !important; }
+  .mask .icon::after, .mask .icon::before { display: none; }
+  .legend { color: #6F7A8A; font-size: 11.5px; margin-top: 10px; }
+</style>
+</head>
+<body>
+  <h1>แบบ D · ทดสอบขนาดตารางกับมาสก์ของ Android</h1>
+  <div class="sub">Android ตัดไอคอนเป็นรูปทรงต่างกันตามเครื่อง (วงกลม / สครอว์เคิล / สี่เหลี่ยมมน) — ตารางที่ใหญ่เกินไปจะโดนตัดหัวมุม</div>
+  <table>
+    <tr>
+      <th></th><th>วงกลม (Android มาตรฐาน)</th><th>สครอว์เคิล (POCO / Pixel)</th><th>สี่เหลี่ยมมน</th>
+    </tr>
+    <tr>
+      <td class="rowhead"><b>gi .115</b> — ที่ออกแบบไว้เดิม<br>(ตารางเต็มจอแบบ vMix)</td>
+      <td><div class="mask circle"><div class="icon d" style="--s:168px;--gi:.115"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="mask squircle"><div class="icon d" style="--s:168px;--gi:.115"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="mask rsquare"><div class="icon d" style="--s:168px;--gi:.115"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+    </tr>
+    <tr>
+      <td class="rowhead"><b>gi .17</b> — ย่อลงเล็กน้อย<br>(มุมเริ่มพ้นวงกลม)</td>
+      <td><div class="mask circle"><div class="icon d" style="--s:168px;--gi:.17"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="mask squircle"><div class="icon d" style="--s:168px;--gi:.17"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="mask rsquare"><div class="icon d" style="--s:168px;--gi:.17"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+    </tr>
+    <tr>
+      <td class="rowhead"><b>gi .21</b> — ย่อตามกรอบปลอดภัย<br>(ทุกช่องรอดทุกมาสก์)</td>
+      <td><div class="mask circle"><div class="icon d" style="--s:168px;--gi:.21"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="mask squircle"><div class="icon d" style="--s:168px;--gi:.21"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="mask rsquare"><div class="icon d" style="--s:168px;--gi:.21"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+    </tr>
+    <tr>
+      <td class="rowhead"><b>gi .26</b> — เผื่อขอบเยอะ<br>(ปลอดภัยสุด แต่ไอคอนเล็กลง)</td>
+      <td><div class="mask circle"><div class="icon d" style="--s:168px;--gi:.26"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="mask squircle"><div class="icon d" style="--s:168px;--gi:.26"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+      <td><div class="mask rsquare"><div class="icon d" style="--s:168px;--gi:.26"><div class="grid">
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+        <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div></div></td>
+    </tr>
+  </table>
+  <div class="legend">ไอคอนจริงต้องใช้กรอบ 108×108 โดยเก็บของสำคัญไว้ในวงกลาง ~66–72 (safe zone) — แถว .17 กับ .21 คือช่วงที่ยังเห็นเป็น “ตาราง 3×3” ครบทุกมาสก์</div>
+</body>
+</html>

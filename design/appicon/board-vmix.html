@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>SWITCHY — ไอคอนกลิ่นไอ vMix</title>
+<link rel="stylesheet" href="icons.css">
+<style>
+  html, body { width: 1600px; height: 1120px; overflow: hidden; }
+  body { padding: 34px 40px; background: radial-gradient(140% 120% at 50% -10%, #10151c 0%, #07090c 60%); }
+  h1 { font-size: 30px; font-weight: 700; }
+  h1 span { color: #FF4D4F; }
+  .sub { color: #8B96A5; font-size: 15px; margin-top: 8px; }
+  .ref { display: flex; align-items: center; gap: 14px; margin-top: 18px; padding: 12px 16px; width: fit-content;
+         border-radius: 14px; background: rgba(255,255,255,.045); box-shadow: inset 0 0 0 1px rgba(255,255,255,.07); }
+  .ref img { width: 56px; height: 56px; border-radius: 14px; }
+  .ref .t { font-size: 13px; color: #A8B3C1; line-height: 1.5; }
+  .cols { display: flex; gap: 26px; margin-top: 22px; }
+  .card { width: 493px; padding: 22px; border-radius: 20px;
+          background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+          box-shadow: inset 0 0 0 1px rgba(255,255,255,.07); }
+  .card h2 { font-size: 19px; font-weight: 700; }
+  .card .tag { color: #7C8797; font-size: 12.5px; }
+  .hero { display: flex; justify-content: center; margin: 18px 0 14px; }
+  .note { color: #A8B3C1; font-size: 13px; line-height: 1.55; min-height: 80px; }
+  .note b { color: #E6EDF3; }
+  .maskrow { display: flex; align-items: center; gap: 18px; margin-top: 12px; }
+  .lbl { color: #6F7A8A; font-size: 11.5px; text-align: center; }
+  .circle { border-radius: 50% !important; }
+  .strip { display: flex; align-items: center; gap: 18px; margin-top: 16px; padding: 16px 18px; border-radius: 16px;
+           background: linear-gradient(160deg, #1b2740, #0d1220 70%); box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
+  .dummy { width: 56px; height: 56px; border-radius: 18px; background: linear-gradient(160deg, #2a3446, #171e2b); opacity: .55; }
+</style>
+</head>
+<body>
+  <h1>SWITCHY <span>·</span> ไอคอน 3 แนว กลิ่นไอ vMix</h1>
+  <div class="sub">ยืม “ภาษาตารางช่อง” ของ vMix มาใช้ — แต่เปลี่ยนช่องพิเศษจากเขียว/ส้ม เป็น <b style="color:#FF4D4F">แดง Tally (ออกอากาศ)</b> และ <b style="color:#6FB4E8">ฟ้า (รอสลับ)</b> ของเรา</div>
+  <div class="ref">
+    <img src="vmix-ref.png" alt="vMix">
+    <div class="t">ต้นฉบับ vMix (วัดสีจริงจากไฟล์ไอคอน): ช่องน้ำเงิน <b>#3078BC</b> · ช่องพิเศษ <b>#44B549</b> เขียว + <b>#F9A31A</b> ส้ม · ร่องตารางโปร่งใส · ขอบมน<br>
+      (เราจงใจไม่คัดลอกช่องเขียว/ส้ม เพราะใน vMix มันมีความหมายเฉพาะของเขา)</div>
+  </div>
+
+  <div class="cols">
+    <!-- D -->
+    <div class="card">
+      <h2>D · Tally Tile Wall</h2>
+      <div class="tag">ตาราง 3×3 แบบ vMix — ช่องกลางคือช่องที่กำลังออกอากาศ (แดงเรืองแสง)</div>
+      <div class="hero"><div class="icon d" style="--s:236px">
+        <div class="grid">
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        </div></div></div>
+      <div class="note">เหมือน vMix ที่สุด — มองปราดเดียวรู้ว่าเป็นตระกูลเดียวกัน แล้ว <b>ช่องแดงกลางจอบอกทันทีว่า "ตัวนี้ออกอากาศ"</b> ตรงกับหน้าที่แอป</div>
+      <div class="maskrow">
+        <div><div class="icon d circle" style="--s:92px"><div class="grid">
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div><div class="lbl">วงกลม</div></div>
+        <div><div class="icon d" style="--s:92px"><div class="grid">
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div><div class="lbl">สครอว์เคิล</div></div>
+        <div><div class="icon d" style="--s:52px"><div class="grid">
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div><div class="lbl">52px จริง</div></div>
+      </div>
+      <div class="strip"><div class="dummy"></div><div class="dummy"></div>
+        <div class="icon d" style="--s:56px"><div class="grid">
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile live"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div></div></div>
+        <div class="dummy"></div></div>
+    </div>
+
+    <!-- E -->
+    <div class="card">
+      <h2>E · Muted Wall + Lamp</h2>
+      <div class="tag">ตารางหม่นลงเป็นฉากหลัง + ตะเกียงแดงเรืองแสงทับมุมขวาล่าง</div>
+      <div class="hero"><div class="icon e" style="--s:236px">
+        <div class="grid">
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+        </div><div class="lamp"></div></div></div>
+      <div class="note">ได้ทั้งกลิ่น vMix และ <b>จุดแดงที่มองเห็นจากระยะไกล</b> — เหมาะกับงานในสตูดิโอที่ต้องเห็นว่าเครื่องไหนออนแอร์</div>
+      <div class="maskrow">
+        <div><div class="icon e circle" style="--s:92px"><div class="grid">
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div></div><div class="lamp"></div></div><div class="lbl">วงกลม</div></div>
+        <div><div class="icon e" style="--s:92px"><div class="grid">
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div></div><div class="lamp"></div></div><div class="lbl">สครอว์เคิล</div></div>
+        <div><div class="icon e" style="--s:52px"><div class="grid">
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div></div><div class="lamp"></div></div><div class="lbl">52px จริง</div></div>
+      </div>
+      <div class="strip"><div class="dummy"></div><div class="dummy"></div>
+        <div class="icon e" style="--s:56px"><div class="grid">
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div>
+          <div class="tile"></div><div class="tile"></div><div class="tile"></div></div><div class="lamp"></div></div>
+        <div class="dummy"></div></div>
+    </div>
+
+    <!-- F -->
+    <div class="card">
+      <h2>F · PGM / PVW Tiles</h2>
+      <div class="tag">สองช่องใหญ่: ซ้ายฟ้า (รอสลับ) ขวาแดง (ออกอากาศ)</div>
+      <div class="hero"><div class="icon f" style="--s:236px">
+        <div class="split"><div class="tile wide pvw"></div><div class="tile wide pgm"></div></div></div></div>
+      <div class="note">เรียบและใหญ่ที่สุด — <b>อ่านออกแม้ขนาดเล็กมาก</b> และอ่านเป็น "แถบ Tally" แบบที่ทีมงานคุ้นจากตัวกล้อง</div>
+      <div class="maskrow">
+        <div><div class="icon f circle" style="--s:92px"><div class="split"><div class="tile wide pvw"></div><div class="tile wide pgm"></div></div></div><div class="lbl">วงกลม</div></div>
+        <div><div class="icon f" style="--s:92px"><div class="split"><div class="tile wide pvw"></div><div class="tile wide pgm"></div></div></div><div class="lbl">สครอว์เคิล</div></div>
+        <div><div class="icon f" style="--s:52px"><div class="split"><div class="tile wide pvw"></div><div class="tile wide pgm"></div></div></div><div class="lbl">52px จริง</div></div>
+      </div>
+      <div class="strip"><div class="dummy"></div><div class="dummy"></div>
+        <div class="icon f" style="--s:56px"><div class="split"><div class="tile wide pvw"></div><div class="tile wide pgm"></div></div></div>
+        <div class="dummy"></div></div>
+    </div>
+  </div>
+</body>
+</html>

@@ -29,7 +29,8 @@
 | Audio relay (UDP) | ✅ | 3 เครื่อง: rx 397–399 แพ็กเก็ต/เครื่อง, `rxWhileOtherSilent = 0` |
 | PTT gate | ✅ | ไม่มีแพ็กเก็ตที่ไม่กด PTT ถูกส่งต่อเลย (0) |
 | RoIP PTT (USB-Serial) | ✅ โค้ดพร้อม | คีย์วิทยุด้วยขา RTS/DTR (CH340/FTDI) — ต้องมีฮาร์ดแวร์จริง |
-| แอป Android (Kotlin) | ✅ บิลด์ APK ได้ | 2 แบบ: ปกติ 2.6 MB · native 6.7 MB (minSdk 26 / targetSdk 36) |
+| **แอป Android (Kotlin)** | ✅ บิลด์ APK ได้ | 2 แบบ: ปกติ 2.6 MB · native 6.7 MB (minSdk 26 / targetSdk 36) |
+| **ไอคอนแอป (แบบ D · Tally Tile Wall)** | ✅ ทำเป็น adaptive icon แล้ว | ตาราง 3×3 น้ำเงิน `#3078BC` (วัดจากไอคอน vMix ตัวจริง) + ช่องกลางแดง Tally เรืองแสง · มีเลเยอร์ monochrome สำหรับไอคอนธีม Android 13+ · ต้นแบบทั้งหมดใน `design/appicon/` |
 | RoIP เสียงวิทยุ ↔ IP | ⏳ เฟส 2 | ต้องมี USB Soundcard + helper (ดู docs/ROIP.md) |
 | **Opus + Oboe (native)** | ✅ **บิลด์+ลิงก์ผ่านแล้ว** | Oboe 1.9.3 + libopus 1.6.1 ต่อกับ NDK r30 / CMake 4.1.2 — `.so` ทั้ง arm64-v8a + armeabi-v7a, JNI ครบ 8 ฟังก์ชัน, เปิด `-O2` แล้ว — บนเครื่องจริง lib โหลดได้ + สตรีมเปิดได้ แต่ยังถอยไปใช้ AudioRecord/AudioTrack (ดูข้อ 6 "Oboe คืน handle=0") |
 | **โหมดต่อ vMix ตรง** | ✅ ทดสอบบนเครื่องจริง | ติ๊กในแอป + ใส่ IP vMix → รับ Tally ผ่าน TCP 8099 เองไม่ต้องมีเซิร์ฟเวอร์ (ยืนยัน: จอไล่สี SAFE→PROGRAM→PREVIEW ตาม vMix) |
@@ -206,6 +207,10 @@ Dashboard ทดสอบ (เปิดจากเบราว์เซอร�
 | ทดสอบมือถือทั้งที่คนละวง Wi-Fi กับ PC | UDP/TCP ไปไม่ถึงกัน | `adb reverse tcp:8090 tcp:8090` (+ `tcp:8099` สำหรับโหมด vMix ตรง) แล้วตั้ง IP ในแอปเป็น `127.0.0.1` |
 | ไดอะล็อกขออนุญาตไมค์โผล่ทุกครั้งที่ทดสอบ | สิทธิ์ถูกให้แบบ "เฉพาะครั้งนี้" (ONE_TIME) | `adb shell pm revoke …RECORD_AUDIO` แล้ว `pm grant` ใหม่ (จะไม่ขึ้น ONE_TIME อีก) |
 | บิลด์ Android ครั้งแรกช้า (~3 นาที) | ดาวน์โหลด AGP/Kotlin/androidx/OkHttp/Oboe/Opus | ครั้งต่อไปเร็ว (~1–1.5 นาที) เพราะแคชไว้แล้ว |
+| `The string "--" is not permitted within comments` | ใช้เส้นคั่นอย่าง `<!-- ---------- -->` ในไฟล์ XML | XML ห้ามมี `--` ในคอมเมนต์ — เขียนคอมเมนต์ธรรมดา |
+| `attribute android:startOffset / centerOffset / x1 / y1 not found` | `<gradient>` ใน VectorDrawable ใช้ชื่อ attribute ไม่เหมือนของ shape drawable | ใช้ `android:startX/startY/endX/endY` (เส้นตรง) หรือ `centerX/centerY/gradientRadius` (วงกลม) และไม่ต้องใส่ offset |
+| ไอคอนบนเครื่องดูถูกตัดหัวมุม / ขนาดไม่ตรงกับที่ออกแบบ | **มาสก์ไอคอนของ Android = วงกลม 72 หน่วย จากกรอบ 108** (ไม่ใช่ safe zone 66) | ให้ครึ่งเส้นทแยงมุมของตาราง ≤ 36 หน่วย → inset ≥ 0.285 (ทดลองครบแล้วใน `design/appicon/mask-test2.html`) |
+| แก้ไอคอนแล้วมือถือยังแสดงไอคอนเดิม (ลบ+ติดตั้งใหม่, bump versionCode ก็ยังเดิม) | HyperOS แคชไอคอนไว้ที่ระบบ | ตรวจว่าไฟล์ใน APK ถูกต้องจริง (grep พิกัดใน `res/drawable/ic_launcher_*.xml` ของ APK) แล้วเรนเดอร์พรีวิวเองด้วย `design/appicon/render_icon_from_xml.py` — เครื่องจะรีเฟรชหลังรีบูต |
 
 คำสั่งบิลด์ที่ใช้ได้บนเครื่องนี้:
 

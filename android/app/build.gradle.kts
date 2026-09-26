@@ -7,12 +7,17 @@ android {
     namespace = "com.switchy.intercom"
     compileSdk = 36
 
+    // ทดสอบไอคอน: ติดตั้งเป็นอีกแพ็กเกจเพื่อเลี่ยงแคชไอคอนของระบบ (ใช้เฉพาะตอนตรวจ ไม่ได้ไปกับรุ่นจริง)
+    //     ./gradlew assembleDebug -PiconTest=true
+    val iconTest = (project.findProperty("iconTest") as String?)?.toBoolean() ?: false
+
     defaultConfig {
         applicationId = "com.switchy.intercom"
         minSdk = 26
         targetSdk = 36
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 3
+        versionName = "0.1.2"
+        if (iconTest) applicationIdSuffix = ".icon"
     }
 
     buildTypes {

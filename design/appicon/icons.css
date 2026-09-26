@@ -1,0 +1,254 @@
+/* SWITCHY — วัสดุและสไตล์ของไอคอน (ใช้ร่วมกันทั้งหน้าพรีวิวและไฟล์เรนเดอร์ขนาดจริง)
+   ทุกขนาดอิงจากตัวแปร --s (ขนาดไอคอน) เพื่อให้ย่อ/ขยายได้สัดส่วนเดิมเป๊ะ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  background: #07090c;
+  font-family: "Leelawadee UI", "Segoe UI", Tahoma, sans-serif;
+  color: #E6EDF3;
+}
+
+/* ---------- ฐานไอคอน (สครอว์เคิลแบบ Android adaptive icon) ---------- */
+.icon {
+  --s: 512px;
+  position: relative;
+  width: var(--s);
+  height: var(--s);
+  border-radius: calc(var(--s) * .235);
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+.icon::after {                       /* ไฮไลต์เฉียงด้านบน = ความเงาแบบกระจก */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(114deg,
+      rgba(255, 255, 255, .13) 0%,
+      rgba(255, 255, 255, .04) 22%,
+      rgba(255, 255, 255, 0) 44%);
+  pointer-events: none;
+}
+.icon::before {                      /* ขอบบาง 1 เส้น = ความเนียนระดับงานฝีมือ */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 max(1px, calc(var(--s) * .0055)) rgba(255, 255, 255, .085),
+  inset 0 calc(var(--s) * .012) calc(var(--s) * .02) rgba(255, 255, 255, .05);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ================= A: Obsidian Lamp — ตะเกียง Tally + สวิตช์ ================= */
+.a {
+  background:
+    radial-gradient(120% 120% at 28% 6%, #2C333E 0%, #161B23 44%, #080B0F 100%);
+}
+.a .lamp {
+  position: absolute;
+  left: 50%;
+  top: 33%;
+  width: calc(var(--s) * .315);
+  height: calc(var(--s) * .315);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #FFC9CB 0%, #FF4D4F 42%, #A8121A 100%);
+  box-shadow:
+    0 0 calc(var(--s) * .17) calc(var(--s) * .025) rgba(255, 77, 79, .50),
+    0 0 calc(var(--s) * .05) rgba(255, 77, 79, .35),
+    inset 0 calc(var(--s) * -.012) calc(var(--s) * .018) rgba(0, 0, 0, .50),
+    inset 0 calc(var(--s) * .010) calc(var(--s) * .014) rgba(255, 255, 255, .45);
+}
+.a .lever {
+  position: absolute;
+  left: 50%;
+  top: 68%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--s) * .47);
+  height: calc(var(--s) * .145);
+  border-radius: 999px;
+  /* รางสวิตช์: โลหะเข้ม + แสงแดงสะท้อนจากตะเกียงด้านซ้าย (ทำให้สองส่วนดูเป็นชิ้นเดียวกัน) */
+  background:
+    radial-gradient(58% 150% at 10% 50%, rgba(255, 77, 79, .34), rgba(255, 77, 79, 0) 72%),
+    linear-gradient(180deg, #1C242E, #0C1116);
+  box-shadow:
+    inset 0 calc(var(--s) * .008) calc(var(--s) * .014) rgba(0, 0, 0, .78),
+    0 calc(var(--s) * .006) calc(var(--s) * .012) rgba(0, 0, 0, .45),
+    inset 0 0 0 max(1px, calc(var(--s) * .004)) rgba(255, 255, 255, .06);
+}
+.a .knob {                            /* ลูกบิดโลหะขัดเงา */
+  position: absolute;
+  right: calc(var(--s) * .026);
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(var(--s) * .105);
+  height: calc(var(--s) * .105);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 24%, #FFFFFF 0%, #E4EAF2 30%, #AEB9C8 62%, #7C8796 100%);
+  box-shadow:
+    0 calc(var(--s) * .007) calc(var(--s) * .013) rgba(0, 0, 0, .60),
+    0 0 calc(var(--s) * .045) rgba(255, 255, 255, .16),
+    inset 0 0 0 max(1px, calc(var(--s) * .004)) rgba(255, 255, 255, .55),
+    inset 0 calc(var(--s) * -.006) calc(var(--s) * .010) rgba(0, 0, 0, .35);
+}
+
+/* ================= B: Dual Tally Panel — ไฟ PGM/PVW บนกระจกรมควัน ================= */
+.b {
+  background:
+    linear-gradient(158deg, #131A24 0%, #0B1017 52%, #05070A 100%);
+}
+.b .frame {
+  position: absolute;
+  inset: calc(var(--s) * .125);
+  border-radius: calc(var(--s) * .105);
+  border: max(1px, calc(var(--s) * .0062)) solid rgba(233, 241, 252, .38);
+  /* กระจกรมควัน: เงาใน + แสงลอดด้านบน ให้ดูมีมิติเป็นแผงจริง */
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .11) 0%, rgba(255, 255, 255, .022) 38%, rgba(255, 255, 255, .05) 100%);
+  box-shadow:
+    inset 0 calc(var(--s) * .035) calc(var(--s) * .07) rgba(0, 0, 0, .55),
+    inset 0 0 calc(var(--s) * .05) rgba(0, 0, 0, .45),
+    0 calc(var(--s) * .012) calc(var(--s) * .034) rgba(0, 0, 0, .55),
+    0 0 0 max(1px, calc(var(--s) * .0035)) rgba(255, 255, 255, .05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--s) * .075);
+}
+.b .dot {
+  width: calc(var(--s) * .168);
+  height: calc(var(--s) * .168);
+  border-radius: 50%;
+}
+.b .dot.pgm {                         /* ตัวที่ออกอากาศ — สว่างเต็ม */
+  background: radial-gradient(circle at 34% 28%, #FFD2D3 0%, #FF4D4F 44%, #A8121A 100%);
+  box-shadow:
+    0 0 calc(var(--s) * .13) calc(var(--s) * .02) rgba(255, 77, 79, .55),
+    inset 0 calc(var(--s) * -.010) calc(var(--s) * .016) rgba(0, 0, 0, .5),
+    inset 0 calc(var(--s) * .009) calc(var(--s) * .012) rgba(255, 255, 255, .45);
+}
+.b .dot.pvw {                         /* ตัวรอสลับ — ติดสลัว */
+  background: radial-gradient(circle at 34% 28%, #BBD6FF 0%, #4C8DFF 46%, #12336F 100%);
+  box-shadow:
+    0 0 calc(var(--s) * .075) calc(var(--s) * .008) rgba(76, 141, 255, .35),
+    inset 0 calc(var(--s) * -.010) calc(var(--s) * .016) rgba(0, 0, 0, .5),
+    inset 0 calc(var(--s) * .009) calc(var(--s) * .012) rgba(255, 255, 255, .35);
+  opacity: .82;
+}
+.b .rail {                            /* แถบไฟสถานะบาง ๆ ใต้วงกลม */
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--s) * .085);
+  transform: translateX(-50%);
+  width: calc(var(--s) * .30);
+  height: max(1px, calc(var(--s) * .008));
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .38), rgba(255, 255, 255, 0));
+}
+
+/* ================= ภาษาตารางแบบ vMix (video wall) =================
+   vMix ใช้ตาราง 3×3 ช่องน้ำเงิน #3078BC + ช่องพิเศษ 2 ช่อง (เขียว/ส้ม) บนพื้นดำ
+   เรายืม "จังหวะตาราง" มาใช้ แต่เปลี่ยนช่องพิเศษเป็น "แดง Tally" ของเราเอง */
+
+.grid {
+  position: absolute;
+  /* ค่าเริ่มต้น .245 = ขนาดที่พิสูจน์แล้วว่ามุมตารางพ้นมาสก์วงกลม 72/108 ของ Android */
+  inset: calc(var(--s) * var(--gi, .245));
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: calc(var(--s) * .030);
+}
+.tile {
+  position: relative;
+  border-radius: calc(var(--s) * .018);
+  /* โทนน้ำเงินคงที่ #3078BC ตรงกับไอคอน vMix ตัวจริง (วัดจากไฟล์) เพื่อให้เป็นตระกูลเดียวกัน */
+  background: linear-gradient(180deg, #4290D4 0%, #3078BC 56%, #1F5590 100%);
+  box-shadow:
+    inset 0 max(1px, calc(var(--s) * .005)) calc(var(--s) * .01) rgba(255, 255, 255, .30),
+    inset 0 calc(var(--s) * -.008) calc(var(--s) * .014) rgba(0, 0, 0, .35);
+}
+.tile.next {                          /* ช่อง "รอสลับ" — สว่างกว่าปกติเล็กน้อย */
+  background: linear-gradient(180deg, #6FB4E8 0%, #3E7FBE 58%, #2A5E92 100%);
+  box-shadow:
+    inset 0 max(1px, calc(var(--s) * .005)) calc(var(--s) * .01) rgba(255, 255, 255, .45),
+    0 0 calc(var(--s) * .05) rgba(76, 141, 255, .28),
+    inset 0 calc(var(--s) * -.008) calc(var(--s) * .014) rgba(0, 0, 0, .30);
+}
+.tile.live {                          /* ช่อง "ออกอากาศ" — แดงเรืองแสง */
+  background: radial-gradient(circle at 36% 26%, #FFB9BB 0%, #FF4D4F 46%, #A8121A 100%);
+  box-shadow:
+    0 0 calc(var(--s) * .16) calc(var(--s) * .022) rgba(255, 77, 79, .60),
+    0 0 calc(var(--s) * .05) rgba(255, 77, 79, .45),
+    inset 0 max(1px, calc(var(--s) * .006)) calc(var(--s) * .012) rgba(255, 255, 255, .48),
+    inset 0 calc(var(--s) * -.010) calc(var(--s) * .016) rgba(0, 0, 0, .40);
+}
+
+/* ---------- D: Tally Tile Wall (ตาราง 3×3 พื้นดำ + ช่องแดงตรงกลาง) ---------- */
+.d { background: radial-gradient(120% 120% at 50% 0%, #0E131A 0%, #05070A 70%); }
+
+/* ---------- E: Muted Wall + Lamp (ตารางหม่น + ตะเกียงแดงมุมขวาล่าง) ---------- */
+.e { background: radial-gradient(120% 120% at 30% 0%, #121A26 0%, #05070B 72%); }
+.e .tile {
+  background: linear-gradient(180deg, #2E4E72 0%, #1B3450 60%, #14293F 100%);
+  box-shadow:
+    inset 0 max(1px, calc(var(--s) * .004)) calc(var(--s) * .009) rgba(255, 255, 255, .18),
+    inset 0 calc(var(--s) * -.008) calc(var(--s) * .014) rgba(0, 0, 0, .40);
+  opacity: .93;
+}
+.e .lamp {
+  position: absolute;
+  right: calc(var(--s) * .145);
+  bottom: calc(var(--s) * .145);
+  width: calc(var(--s) * .31);
+  height: calc(var(--s) * .31);
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #FFD2D3 0%, #FF4D4F 44%, #A8121A 100%);
+  box-shadow:
+    0 0 calc(var(--s) * .19) calc(var(--s) * .028) rgba(255, 77, 79, .58),
+    0 0 calc(var(--s) * .06) rgba(255, 77, 79, .40),
+    inset 0 calc(var(--s) * -.012) calc(var(--s) * .018) rgba(0, 0, 0, .50),
+    inset 0 calc(var(--s) * .010) calc(var(--s) * .014) rgba(255, 255, 255, .45);
+  z-index: 4;
+}
+
+/* ---------- F: PGM/PVW Tiles (สองช่องใหญ่ ฟ้า/แดง) ---------- */
+.f { background: radial-gradient(120% 120% at 50% 0%, #0D1117 0%, #05070A 70%); }
+.f .split {
+  position: absolute;
+  inset: calc(var(--s) * .125);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(var(--s) * .032);
+}
+.f .tile { border-radius: calc(var(--s) * .026); }
+.f .wide.pvw {
+  background: linear-gradient(175deg, #4E93D4 0%, #2C639C 55%, #1B4468 100%);
+  box-shadow:
+    inset 0 max(1px, calc(var(--s) * .006)) calc(var(--s) * .012) rgba(255, 255, 255, .40),
+    inset 0 calc(var(--s) * -.012) calc(var(--s) * .02) rgba(0, 0, 0, .38);
+}
+.f .wide.pgm {
+  background: radial-gradient(circle at 36% 22%, #FFB9BB 0%, #FF4D4F 50%, #A8121A 100%);
+  box-shadow:
+    0 0 calc(var(--s) * .15) calc(var(--s) * .02) rgba(255, 77, 79, .55),
+    inset 0 max(1px, calc(var(--s) * .007)) calc(var(--s) * .014) rgba(255, 255, 255, .5),
+    inset 0 calc(var(--s) * -.012) calc(var(--s) * .022) rgba(0, 0, 0, .40);
+}
+
+.c {
+  background:
+    radial-gradient(110% 100% at 24% 4%, #20305C 0%, #0D1730 40%, #05070D 100%);
+}
+.c svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.c .led {
+  position: absolute;
+  right: calc(var(--s) * .185);
+  bottom: calc(var(--s) * .185);
+  width: calc(var(--s) * .085);
+  height: calc(var(--s) * .085);
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #FFD2D3, #FF4D4F 52%, #B3151A 100%);
+  box-shadow: 0 0 calc(var(--s) * .055) rgba(255, 77, 79, .75);
+}
