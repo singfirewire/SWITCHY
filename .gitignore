@@ -1,0 +1,30 @@
+# ---- Go server ----
+server/dist/
+server/run/
+*.exe
+*.test
+*.out
+
+# ---- Android ----
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/captures/
+# ไฟล์กลางของ NDK/CMake (โฟลเดอร์นี้ยังมี source ของ Oboe/Opus ที่ดึงมาให้บิลด์)
+android/app/.cxx/
+android/.kotlin/
+*.apk
+*.aab
+*.iml
+
+# ---- ค่าตั้งเฉพาะเครื่อง (อย่า commit) ----
+server/config.json
+**/config.local.json
+
+# ---- OS/editor ----
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
