@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- สีตามสเปก Tally: แดง = PROGRAM, เขียว = PREVIEW, เทา = SAFE -->
+    <color name="tally_program">#E5484D</color>
+    <color name="tally_preview">#30A46C</color>
+    <color name="tally_safe">#39424F</color>
+    <color name="tally_unknown">#20262E</color>
+
+    <color name="bg">#0B0F14</color>
+    <color name="panel">#141A22</color>
+    <color name="line">#243040</color>
+    <color name="txt">#E6EDF3</color>
+    <color name="dim">#8B9BAD</color>
+    <color name="accent">#3B82F6</color>
+    <color name="warn">#FFB224</color>
+    <color name="ok">#30A46C</color>
+    <color name="ptt">#1F6FEB</color>
+    <color name="ptt_pressed">#E5484D</color>
+    <color name="icon_bg">#0E141B</color>
+</resources>

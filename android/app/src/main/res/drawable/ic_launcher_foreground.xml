@@ -1,0 +1,18 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- วงกลม Tally -->
+    <path
+        android:fillColor="#E5484D"
+        android:pathData="M54,30 m-13,0 a13,13 0 1,0 26,0 a13,13 0 1,0 -26,0" />
+    <!-- กรอบกล้อง -->
+    <path
+        android:fillColor="#E6EDF3"
+        android:pathData="M30,52h48a6,6 0 0 1 6,6v20a6,6 0 0 1 -6,6H30a6,6 0 0 1 -6,-6V58a6,6 0 0 1 6,-6zM30,58v20h48V58z" />
+    <!-- เลนส์ -->
+    <path
+        android:fillColor="#30A46C"
+        android:pathData="M54,68 m-9,0 a9,9 0 1,0 18,0 a9,9 0 1,0 -18,0" />
+</vector>

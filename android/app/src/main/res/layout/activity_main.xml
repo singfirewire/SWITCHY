@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.12"
+            android:text="@string/app_name"
+            android:textColor="@color/txt"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:text="Intercom + Tally Light สำหรับทีมถ่ายทอดสด"
+            android:textColor="@color/dim"
+            android:textSize="13sp" />
+
+        <!-- ข้อมูลเซิร์ฟเวอร์ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_panel"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                style="@style/SwitchyLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_server_ip" />
+
+            <EditText
+                android:id="@+id/etHost"
+                style="@style/SwitchyInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="none"
+                android:hint="@string/hint_server_ip"
+                android:inputType="text"
+                android:maxLines="1" />
+
+            <TextView
+                style="@style/SwitchyLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_ws_port" />
+
+            <EditText
+                android:id="@+id/etPort"
+                style="@style/SwitchyInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="none"
+                android:inputType="number"
+                android:maxLines="1" />
+
+            <TextView
+                style="@style/SwitchyLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_name" />
+
+            <EditText
+                android:id="@+id/etName"
+                style="@style/SwitchyInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="none"
+                android:hint="@string/hint_name"
+                android:inputType="textPersonName"
+                android:maxLines="1" />
+
+            <TextView
+                style="@style/SwitchyLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_token" />
+
+            <EditText
+                android:id="@+id/etToken"
+                style="@style/SwitchyInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="none"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+        </LinearLayout>
+
+        <!-- โหมดการทำงาน -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_panel"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                style="@style/SwitchyLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_mode" />
+
+            <CheckBox
+                android:id="@+id/cbDirect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/accent"
+                android:text="@string/cb_direct_vmix"
+                android:textColor="@color/txt"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvDirectHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/hint_direct_vmix"
+                android:textColor="@color/dim"
+                android:textSize="12sp" />
+
+            <TextView
+                style="@style/SwitchyLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_vmix_ip" />
+
+            <EditText
+                android:id="@+id/etVmixHost"
+                style="@style/SwitchyInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="none"
+                android:hint="@string/hint_vmix_ip"
+                android:inputType="text"
+                android:maxLines="1" />
+
+            <TextView
+                style="@style/SwitchyLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_vmix_port" />
+
+            <EditText
+                android:id="@+id/etVmixPort"
+                style="@style/SwitchyInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="none"
+                android:inputType="number"
+                android:maxLines="1"
+                android:text="8099" />
+        </LinearLayout>
+
+        <!-- เลือกกล้อง -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_panel"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                style="@style/SwitchyLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_camera" />
+
+            <LinearLayout
+                android:id="@+id/rowCameras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+
+            <TextView
+                android:id="@+id/tvCameraHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="แตะ &quot;ตรวจเซิร์ฟเวอร์&quot; เพื่อดึงรายการกล้องจาก Mini PC (หรือใช้ cam1/cam2/cam3 ที่ตั้งไว้)"
+                android:textColor="@color/dim"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnCheck"
+            style="@style/SwitchyButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/btn_check" />
+
+        <Button
+            android:id="@+id/btnConnect"
+            style="@style/SwitchyButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/btn_connect" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/not_connected"
+            android:textColor="@color/dim"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvServerInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_panel"
+            android:padding="12dp"
+            android:textColor="@color/txt"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_panel"
+            android:fontFamily="monospace"
+            android:maxLines="12"
+            android:minHeight="60dp"
+            android:padding="12dp"
+            android:textColor="@color/dim"
+            android:textSize="11sp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ธีมพื้นฐานของระบบ (ไม่พึ่ง AppCompat/Material library ให้บิลด์เบา) -->
+    <style name="SwitchyTheme" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:colorAccent">@color/accent</item>
+        <item name="android:colorPrimary">@color/panel</item>
+        <item name="android:colorPrimaryDark">@color/bg</item>
+        <item name="android:textColorPrimary">@color/txt</item>
+        <item name="android:textColorSecondary">@color/dim</item>
+        <item name="android:textColorHint">@color/dim</item>
+        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:navigationBarColor">@color/bg</item>
+    </style>
+
+    <style name="SwitchyLabel">
+        <item name="android:textColor">@color/dim</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.06</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+    <style name="SwitchyInput">
+        <item name="android:background">@drawable/bg_input</item>
+        <item name="android:textColor">@color/txt</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:layout_marginBottom">14dp</item>
+    </style>
+
+    <style name="SwitchyButton">
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="android:textColor">@color/txt</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+
+    <style name="SwitchyButtonPrimary" parent="SwitchyButton">
+        <item name="android:background">@drawable/bg_button_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SwitchyCamChip">
+        <item name="android:background">@drawable/bg_chip</item>
+        <item name="android:textColor">@color/txt</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:minWidth">72dp</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">14dp</item>
+    </style>
+</resources>

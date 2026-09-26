@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SWITCHY</string>
+    <string name="title_setup">ตั้งค่าการเชื่อมต่อ</string>
+    <string name="title_tally">Tally / Intercom</string>
+
+    <string name="label_server_ip">IP เซิร์ฟเวอร์ (Mini PC)</string>
+    <string name="label_ws_port">พอร์ต WebSocket</string>
+    <string name="label_name">ชื่อของฉันในห้อง</string>
+    <string name="label_camera">กล้องที่รับผิดชอบ</string>
+    <string name="label_token">รหัสผ่านห้อง (ถ้ามี)</string>
+
+    <string name="hint_server_ip">192.168.1.50</string>
+    <string name="hint_name">เช่น กล้อง 1 / สลับภาพ</string>
+
+    <string name="btn_check">ตรวจเซิร์ฟเวอร์</string>
+    <string name="btn_connect">เชื่อมต่อและเข้าใช้งาน</string>
+    <string name="btn_disconnect">ออกจากห้อง</string>
+    <string name="btn_save">บันทึกค่า</string>
+    <string name="btn_exit">ปิดจอ Tally</string>
+    <string name="btn_ptt">กดค้างเพื่อพูด</string>
+    <string name="btn_ptt_active">กำลังส่งเสียง…</string>
+
+    <string name="state_program">PROGRAM · ออกอากาศ</string>
+    <string name="state_preview">PREVIEW · รอสลับ</string>
+    <string name="state_safe">SAFE · ไม่ได้ใช้</string>
+    <string name="state_unknown">ยังไม่ทราบสถานะ</string>
+
+    <string name="label_peers">คนในห้อง</string>
+    <string name="label_mic">ระดับไมค์</string>
+    <string name="label_gate">ตัดเสียงรบกวน (Noise Gate)</string>
+    <string name="label_mute_while_talk">ปิดลำโพงขณะกดพูด</string>
+    <string name="label_status">สถานะ</string>
+    <string name="not_connected">ยังไม่เชื่อมต่อ</string>
+    <string name="connecting">กำลังเชื่อมต่อ…</string>
+    <string name="connected">เชื่อมต่อแล้ว</string>
+
+    <string name="notif_channel">SWITCHY Intercom</string>
+    <string name="notif_title">SWITCHY ทำงานอยู่</string>
+    <string name="notif_text">เชื่อมต่อกับ %1$s</string>
+    <string name="notif_ptt_on">🎙 กำลังส่งเสียง</string>
+    <string name="notif_ptt_off">พร้อมรับเสียง</string>
+
+    <string name="perm_mic_needed">ต้องอนุญาตไมโครโฟนเพื่อใช้ Intercom</string>
+    <string name="perm_notif_needed">ควรอนุญาตการแจ้งเตือน เพื่อให้ระบบไม่ตัดเสียงเมื่อดับจอ</string>
+
+    <!-- โหมดต่อ vMix ตรง -->
+    <string name="label_mode">โหมดการทำงาน</string>
+    <string name="cb_direct_vmix">ต่อ vMix โดยตรง (ไม่ต้องใช้เซิร์ฟเวอร์)</string>
+    <string name="hint_direct_vmix">โหมดนี้ได้เฉพาะไฟ Tally — Intercom (เสียง) ต้องใช้เซิร์ฟเวอร์ SWITCHY</string>
+    <string name="label_vmix_ip">IP ของ vMix (โหมดตรง)</string>
+    <string name="hint_vmix_ip">192.168.1.40</string>
+    <string name="label_vmix_port">พอร์ต Tally ของ vMix</string>
+    <string name="hint_intercom_off">Intercom ปิดในโหมดต่อ vMix ตรง — ต้องใช้เซิร์ฟเวอร์ SWITCHY</string>
+
+    <!-- ข้อความจากศูนย์ควบคุม -->
+    <string name="title_messages">ข้อความจากศูนย์ควบคุม</string>
+    <string name="btn_messages">ข้อความ</string>
+    <string name="btn_back_tally">กลับจอ Tally</string>
+    <string name="hint_messages_readonly">อ่านได้อย่างเดียว — ตอบกลับได้เฉพาะปุ่มด้านล่าง (เครื่องลูกพิมพ์เองไม่ได้)</string>
+    <string name="hint_messages_no_server">โหมดต่อ vMix ตรงไม่มีช่องทางข้อความ — ต้องเชื่อมผ่านเซิร์ฟเวอร์ SWITCHY</string>
+    <string name="label_quick_reply">ตอบกลับสำเร็จรูป</string>
+    <string name="reply_ack">รับทราบ</string>
+    <string name="reply_disagree">ไม่เห็นด้วย</string>
+    <string name="reply_help">ขอความช่วยเหลือ</string>
+    <string name="reply_sent">ส่งแล้ว: %1$s (%2$s)</string>
+    <string name="no_messages_yet">ยังไม่มีข้อความจากศูนย์ควบคุม</string>
+    <string name="no_message_to_reply">ยังไม่มีข้อความให้ตอบกลับ</string>
+
+    <!-- เชื่อมต่อไม่ติด -->
+    <string name="dlg_conn_failed_title">เชื่อมต่อไม่ได้</string>
+    <string name="dlg_conn_failed_msg">ต่อ%1$sไม่สำเร็จ (%2$s)\n\nตรวจว่าเปิด %1$sอยู่ และ IP/พอร์ตถูกต้องไหม — ต้องการไปกรอก IP เองหรือลองใหม่</string>
+    <string name="dlg_open_settings">ไปกรอก IP</string>
+    <string name="dlg_retry">ลองใหม่</string>
+    <string name="dlg_close">ปิด</string>
+</resources>
