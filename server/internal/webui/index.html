@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SWITCHY · Tally Dashboard</title>
+<style>
+  :root{
+    --bg:#0b0f14; --panel:#141a22; --line:#243040; --txt:#e6edf3; --dim:#8b9bad;
+    --pgm:#e5484d; --pvw:#30a46c; --safe:#39424f;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.5 "Segoe UI",system-ui,sans-serif}
+  header{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--panel)}
+  header h1{margin:0;font-size:17px;letter-spacing:.5px}
+  .dot{width:9px;height:9px;border-radius:50%;background:#8b9bad}
+  .dot.on{background:#30a46c;box-shadow:0 0 8px #30a46c}
+  .spacer{flex:1}
+  .kv{color:var(--dim);font-size:12px}
+  main{padding:20px;display:grid;gap:16px;grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
+  @media(max-width:860px){main{grid-template-columns:1fr}}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .panel h2{margin:0 0 12px;font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--dim)}
+  .cams{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+  .cam{position:relative;border-radius:12px;padding:16px;min-height:120px;display:flex;flex-direction:column;justify-content:space-between;
+       background:var(--safe);border:1px solid rgba(255,255,255,.08);transition:background .18s ease}
+  .cam.program{background:var(--pgm)}
+  .cam.preview{background:var(--pvw)}
+  .cam .code{font-size:11px;letter-spacing:2px;opacity:.85}
+  .cam .name{font-size:20px;font-weight:600}
+  .cam .state{font-size:12px;letter-spacing:1px;text-transform:uppercase;opacity:.9}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.8px}
+  .talking{color:#ffd166;font-weight:600}
+  button{background:#1f2a37;color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:7px 11px;cursor:pointer;font-size:12px}
+  button:hover{border-color:#3d5166}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  code{background:#0e141b;border:1px solid var(--line);border-radius:6px;padding:1px 5px;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <span class="dot" id="dot"></span>
+  <h1>SWITCHY</h1>
+  <span class="kv" id="conn">กำลังเชื่อมต่อ…</span>
+  <span class="spacer"></span>
+  <span class="kv" id="meta"></span>
+</header>
+<main>
+  <section class="panel">
+    <h2>Tally</h2>
+    <div class="cams" id="cams"></div>
+    <div class="row">
+      <button data-sim="cam1:program">cam1 = PROGRAM</button>
+      <button data-sim="cam2:preview">cam2 = PREVIEW</button>
+      <button data-sim="cam1:safe">cam1 = SAFE</button>
+      <button id="clear">ล้างทั้งหมด</button>
+    </div>
+    <p class="kv">ปุ่มด้านบนยิง <code>POST /api/tally</code> (ใช้ทดสอบก่อนต่อ vMix จริง)</p>
+  </section>
+  <section class="panel">
+    <h2>คนในห้อง (Intercom)</h2>
+    <table>
+      <thead><tr><th>#</th><th>ชื่อ</th><th>กล้อง</th><th>โคเด็ก</th><th>IP</th><th>PTT</th></tr></thead>
+      <tbody id="peers"><tr><td colspan="6" class="kv">—</td></tr></tbody>
+    </table>
+  </section>
+
+  <!-- ศูนย์ควบคุม: ส่งข้อความทางเดียว + ดูการตอบกลับด้วยปุ่มสำเร็จรูป -->
+  <section class="panel" style="grid-column:1/-1">
+    <h2>ข้อความจากศูนย์ควบคุม → เครื่องลูก</h2>
+    <div class="row" style="margin-top:0">
+      <input id="msgFrom" value="โปรดิวเซอร์" style="min-width:150px;flex:0 0 auto;background:#0e141b;color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:8px">
+      <input id="msgText" placeholder="พิมพ์ข้อความถึงทีม…" style="flex:1;min-width:240px;background:#0e141b;color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:8px">
+      <label class="kv" style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="msgAlert"> ด่วน</label>
+      <button id="msgSend" style="background:#1d4ed8;border-color:#1d4ed8">ส่งข้อความ</button>
+    </div>
+    <table style="margin-top:12px">
+      <thead><tr><th>เวลา</th><th>จาก</th><th>ข้อความ</th><th>การตอบกลับ</th></tr></thead>
+      <tbody id="msgList"><tr><td colspan="4" class="kv">— ยังไม่มีข้อความ —</td></tr></tbody>
+    </table>
+  </section>
+</main>
+<script>
+const $ = s => document.querySelector(s);
+const STATE_TH = {program:'PROGRAM (LIVE)', preview:'PREVIEW', safe:'SAFE', unknown:'ไม่ทราบ'};
+let ws, cams = [], talkers = [];
+
+function drawCams(states){
+  $('#cams').innerHTML = cams.map(c => {
+    const st = (states && states[c.code]) || 'unknown';
+    return `<div class="cam ${st}">
+      <div class="code">${c.code.toUpperCase()}${c.vmixInput ? ' · IN '+c.vmixInput : ''}</div>
+      <div>
+        <div class="name">${c.name || c.code}</div>
+        <div class="state">${STATE_TH[st] || st}</div>
+      </div></div>`;
+  }).join('');
+}
+
+function drawPeers(peers){
+  const rows = (peers||[]).map(p => `<tr>
+    <td>${p.num}</td><td>${p.name}</td><td>${p.camera}</td><td>${p.codec}</td>
+    <td>${p.ip}${p.audioPort ? ':'+p.audioPort : ''}</td>
+    <td class="${p.ptt?'talking':''}">${p.ptt?'● พูดอยู่':'—'}</td></tr>`).join('');
+  $('#peers').innerHTML = rows || '<tr><td colspan="6" class="kv">— ยังไม่มีเครื่องอื่น —</td></tr>';
+}
+
+function applyTally(t){
+  if (!t) return;
+  cams = cams.length ? cams : [];
+  drawCams(t.states);
+  $('#meta').textContent = `source=${t.source} · seq=${t.seq} · vMix=${t.vmixUp ? 'เชื่อมต่อ' : 'ขาด'}`;
+}
+
+function connect(){
+  ws = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/ws');
+  ws.onopen = () => {
+    $('#dot').classList.add('on'); $('#conn').textContent = 'เชื่อมต่อแล้ว';
+    ws.send(JSON.stringify({t:'hello', proto:1, name:'dashboard', camera:cams[0]?.code || 'cam1', codec:'pcm'}));
+    fetch('/api/state').then(r=>r.json()).then(d => {});
+  };
+  ws.onclose = () => { $('#dot').classList.remove('on'); $('#conn').textContent = 'ขาดการเชื่อมต่อ - ลองใหม่…'; setTimeout(connect, 2000); };
+  ws.onmessage = ev => {
+    const m = JSON.parse(ev.data);
+    if (m.t === 'welcome'){ cams = cams.length ? cams : Object.keys(m.tally?.states||{}).map((code,i)=>({code,name:code,vmixInput:i+1})); applyTally(m.tally); drawPeers(m.peers); }
+    if (m.t === 'tally') applyTally(m.tally);
+    if (m.t === 'peers') drawPeers(m.peers);
+    if (m.t === 'audio') { talkers = m.audio.talkers || []; }
+    if (m.t === 'error') console.warn('server:', m.error);
+  };
+}
+
+document.querySelectorAll('[data-sim]').forEach(b => b.onclick = () => {
+  const [camera, state] = b.dataset.sim.split(':');
+  fetch('/api/tally', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({camera, state})});
+});
+$('#clear').onclick = () => fetch('/api/tally', {method:'POST', headers:{'Content-Type':'application/json'},
+  body: JSON.stringify({states:{cam1:'safe', cam2:'safe', cam3:'safe'}})});
+
+fetch('/api/state').then(r=>r.json()).then(d => {
+  const s = d.tally?.states || {};
+  cams = Object.keys(s).map((code,i)=>({code, name:code, vmixInput:i+1}));
+  drawCams(s); drawPeers(d.peers);
+});
+connect();
+
+/* ---- ศูนย์ควบคุม: ส่งข้อความ + ดูการตอบกลับของเครื่องลูก ---- */
+let lastMsgId = 0, lastReplyId = 0, msgCache = [], replyCache = [];
+
+function renderMsgs(){
+  const rows = msgCache.slice().reverse().map(m => {
+    const reps = replyCache.filter(r => r.msgId === m.id)
+      .map(r => `${r.name}: ${r.label}`).join(', ');
+    const t = new Date(m.at).toLocaleTimeString('th-TH', {hour:'2-digit', minute:'2-digit'});
+    return `<tr><td>${t}</td><td>${m.from}</td><td>${m.text}${m.kind === 'alert' ? ' ⚠' : ''}</td>
+            <td>${reps ? '<b style="color:#30a46c">' + reps + '</b>' : '—'}</td></tr>`;
+  }).join('');
+  $('#msgList').innerHTML = rows || '<tr><td colspan="4" class="kv">— ยังไม่มีข้อความ —</td></tr>';
+}
+
+async function loadMsgs(first){
+  try {
+    const r = await fetch(`/api/messages?since=${first ? 0 : lastMsgId}&replies=${first ? 0 : lastReplyId}`);
+    const d = await r.json();
+    msgCache = first ? d.messages : msgCache.concat(d.messages);
+    replyCache = first ? d.replies : replyCache.concat(d.replies);
+    lastMsgId = msgCache.length ? msgCache[msgCache.length-1].id : 0;
+    lastReplyId = replyCache.length ? replyCache[replyCache.length-1].id : 0;
+    renderMsgs();
+  } catch (e) { /* เซิร์ฟเวอร์ปิดอยู่ — ลองรอบหน้า */ }
+}
+
+$('#msgSend').onclick = async () => {
+  const text = $('#msgText').value.trim();
+  if (!text) { $('#msgText').focus(); return; }
+  await fetch('/api/message', {
+    method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      text,
+      from: $('#msgFrom').value.trim() || 'ศูนย์ควบคุม',
+      kind: $('#msgAlert').checked ? 'alert' : 'info'
+    })
+  });
+  $('#msgText').value = '';
+  $('#msgAlert').checked = false;
+  loadMsgs(false);
+};
+$('#msgText').addEventListener('keydown', e => { if (e.key === 'Enter') $('#msgSend').click(); });
+
+loadMsgs(true);
+setInterval(() => loadMsgs(false), 3000);
+</script>
+</body>
+</html>

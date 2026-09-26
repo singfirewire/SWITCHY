@@ -1,0 +1,42 @@
+{
+  "serverName": "SWITCHY Gateway",
+  "authToken": "",
+  "advertiseIp": "",
+  "listen": {
+    "http": ":8090",
+    "audioUdp": ":50500"
+  },
+  "vmix": {
+    "enabled": true,
+    "host": "192.168.1.40",
+    "tallyPort": 8099,
+    "httpPort": 8088,
+    "pollTitlesMs": 5000,
+    "reconnectMs": 3000
+  },
+  "audio": {
+    "frameMs": 20,
+    "sampleRate": 48000,
+    "opusBitrate": 32000,
+    "fullDuplex": false,
+    "maxTalkers": 4,
+    "jitterFrames": 3,
+    "disableIpCheck": false
+  },
+  "roip": {
+    "enabled": false,
+    "serialPort": "COM3",
+    "baud": 9600,
+    "pttMode": "rts",
+    "invertPtt": false,
+    "audioUdp": "",
+    "voxThreshold": 0.02,
+    "talkTailMs": 250
+  },
+  "cameras": [
+    { "code": "cam1", "name": "กล้อง 1", "vmixInput": 1 },
+    { "code": "cam2", "name": "กล้อง 2", "vmixInput": 2 },
+    { "code": "cam3", "name": "กล้อง 3", "vmixInput": 3 },
+    { "code": "cam4", "name": "กล้อง 4", "vmixInput": 4 }
+  ]
+}
